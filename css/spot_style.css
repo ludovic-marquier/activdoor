@@ -6,7 +6,92 @@
 }
 
 body{
+    text-align: center;
     font-family: vice;
+    background: #d4dadc;
+}
+
+
+h1{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+article{
+    margin-top: 20px;
+}
+
+h4{
+    font-size: 22px;
+}
+
+.spot_button{
+    margin: 25px;
+    padding: 10px;
+    background: white;
+    border-radius: 9px;
+    transition: all .2s ease-in-out;
+}
+
+.spot_button:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    cursor: pointer;
+}
+
+
+
+
+.bottom_button{
+    width:50px;
+    height:50px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    margin: 50px;
+    z-index: 200;position: absolute;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius: 50px;
+    transition: all .2s ease-in-out;
+    display: block;
+}
+
+
+.col-sm-9 {
+    width:100%
+}
+
+.container {
+    padding-right:15px;
+    padding-left:15px;
+    margin-right:auto;
+    margin-left:auto
+}
+@media (min-width:768px) {
+    .container {
+        width:750px
+    }
+}
+@media (min-width:992px) {
+    .container {
+        width:970px
+    }
+}
+@media (min-width:1200px) {
+    .container {
+        width:1070px
+    }
+}
+
+#infobutton {
+    margin-bottom: 120px;
+}
+
+#addbutton{
+    margin-bottom: 190px;
+}
+
+.bottom_button:hover{
+    transform: scale(1.1);
 }
 
 
@@ -85,7 +170,7 @@ body{
 @media screen and (max-width: 600px) {
     .column {
         flex: 70%;
-        max-width: 80%;
+        max-width: 100%;
     }
 }
 
@@ -94,11 +179,46 @@ body{
 }
 
 
+.spot-infos{
+    margin: 15px;
+    background: white;
+    padding: 8px;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: inline;
+    transition: all .2s ease-in-out;
+}
+
+.spot-infos:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.visited{
+    margin: 15px;
+    background: limegreen;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+    display: inline;
+    transition: all .2s ease-in-out;
+    margin-bottom: 30px;
+}
+
+.visited:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
 
 /*   */
 
 body{margin-top:20px;
-    background:#eee;
+    background: #d4dadc;
     font-family: vice;
 }
 

@@ -1,22 +1,6 @@
-<!DOCTYPE html>
+<?php $title = "Information sur ".$spot['nom']; ?>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
-    <!-- nav bar -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/spot_style.css" rel="stylesheet">
-</head>
-
-<body>
+<?php ob_start(); ?>
 
 <div class="container">
     <div class="row">
@@ -30,7 +14,7 @@
                         <div class="col-lg-12">
                             <div class="col-xs-12 col-sm-4">
                                 <figure>
-                                    <img class="img-circle img-responsive" alt="" src="../src/img/acticon/skateboard.png">
+                                    <img class="img-circle img-responsive" alt="" src="../src/img/acticon/<?= $spot['type'] ?>.png">
                                 </figure>
                                 <div class="row">
                                     <div class="col-xs-12 social-btns">
@@ -49,9 +33,9 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-8" style="margin-top: 50px;">
-                                <h1>Skatepark Cergy-le-haut</h1>
-                                <p class="spot_button" >Skateboard</p>
-                                <p class="spot_button">Cergy-Pontoise</p>
+                                <h1> <?= $spot['nom'] ?></h1>
+                                <p class="spot_button" ><?= $spot['type'] ?></p>
+                                <p class="spot_button"><?= $spot['ville'] ?></p>
                                 <p class="spot_button" style="background: limegreen; color: white;">J'y suis allé !</p>
 
                                 <form class="rating-form" action="#" method="post" name="rating-movie">
@@ -112,13 +96,9 @@
                 <div class="bottom_content">
                     <h4>Description</h4>
                     <p>
-                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu,
-                        te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                        <?= $spot['description'] ?>
                     </p>
-                    <p>
-                        Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis.
-                        Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
-                    </p>
+
 
                     <div class="row">
                         <div class="column">
@@ -156,22 +136,9 @@
     </div>
 </div>
 </div>
-</body>
 
-<script>
 
-    function openActivity(){
-        alert("en construction");
-    }
+<?php $content = ob_get_clean(); ?>
 
-    function openCity(){
-        alert("en construction");
-    }
+<?php require('template.php'); ?>
 
-    function visited(){
-        alert("en construction");
-    }
-
-</script>
-
-</html>

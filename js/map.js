@@ -59,39 +59,115 @@ function displayMap(latitude, longitude, zoomLevel){
     }).addTo(macarte);
 
 
-    var myIcon = L.icon({
-        iconUrl: "../devAvence/src/img/markers/ski.png",
+    var skiIcon = L.icon({
+        iconUrl: "./src/img/markers/ski.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
-
-    var myIcon2 = L.icon({
-        iconUrl: "../devAvence/src/img/markers/vtt.png",
+    var vttIcon = L.icon({
+        iconUrl: "./src/img/markers/vtt.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
-    var myIcon3 = L.icon({
-        iconUrl: "../devAvence/src/img/markers/windsurf.png",
+    var windsurfIcon = L.icon({
+        iconUrl: "./src/img/markers/windsurf.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
-    var marker2 = L.marker([48.996596, 2.026829], {icon: myIcon2}).addTo(macarte);
+    var runningIcon = L.icon({
+        iconUrl: "./src/img/markers/running.png",
+        iconSize: [40, 56],
+        iconAnchor: [25, 50],
+        popupAnchor: [-3, -76],
+    });
 
-    var marker3 = L.marker([49.030294, 2.053852], {icon: myIcon3}).addTo(macarte);
+    var wakeBoardIcon = L.icon({
+        iconUrl: "./src/img/markers/wakeboard.png",
+        iconSize: [40, 56],
+        iconAnchor: [25, 50],
+        popupAnchor: [-3, -76],
+    });
 
-    var marker4 = L.marker([42.815800, 0.320440], {icon: myIcon}).addTo(macarte).on('click', function(e) {
-        document.location.href = "./html/spot.html";
-    });;
+    var workoutIcon = L.icon({
+        iconUrl: "./src/img/markers/workout.png",
+        iconSize: [40, 56],
+        iconAnchor: [25, 50],
+        popupAnchor: [-3, -76],
+    });
 
-    markerClusters.addLayer(marker2);
-    markerClusters.addLayer(marker3);
-    markerClusters.addLayer(marker4);
+    var basketIcon = L.icon({
+        iconUrl: "./src/img/markers/basket.png",
+        iconSize: [40, 56],
+        iconAnchor: [25, 50],
+        popupAnchor: [-3, -76],
+    });
+
+    var surfIcon = L.icon({
+        iconUrl: "./src/img/markers/surf.png",
+        iconSize: [40, 56],
+        iconAnchor: [25, 50],
+        popupAnchor: [-3, -76],
+    });
+
+    var footballIcon = L.icon({
+        iconUrl: "./src/img/markers/football.png",
+        iconSize: [40, 56],
+        iconAnchor: [25, 50],
+        popupAnchor: [-3, -76],
+    });
+
+    var skateboardIcon = L.icon({
+        iconUrl: "./src/img/markers/skateboard.png",
+        iconSize: [40, 56],
+        iconAnchor: [25, 50],
+        popupAnchor: [-3, -76],
+    });
+
+    var tabIcon = { "ski" : skiIcon,
+        "windsurf" : windsurfIcon,
+        "VTT": vttIcon,
+        "running" : runningIcon,
+        "wakeboard" : wakeBoardIcon,
+        "workout" : workoutIcon,
+        "basket" : basketIcon,
+        "surf" : surfIcon,
+        "football" : footballIcon,
+        "skateboard" : skateboardIcon
+    };
+
+
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            obj = JSON.parse(this.responseText);
+
+            var markers = [];
+
+            for (i in obj) {
+                console.log(obj[i].type);
+
+                markers[i] = L.marker([obj[i].latitude, obj[i].longitude], {icon: tabIcon[obj[i].type]});
+                markers[i].myCustomId = obj[i].idSpot;
+                markers[i].addTo(macarte);
+                markers[i].on('click', markerClick);
+
+
+            }
+
+            for(i in markers){
+                markerClusters.addLayer(markers[i]);
+            }
+        }
+    };
+    xhttp.open("GET", "https://activdoor.000webhostapp.com/php/index.php?action=getAllSpots&json=true", true);
+    xhttp.send();
 
     macarte.addLayer(markerClusters);
 
@@ -100,3 +176,6 @@ function displayMap(latitude, longitude, zoomLevel){
     document.getElementById('materialButtons').style.visibility = "visible";
 }
 
+function markerClick(e){
+    window.open("./php/index.php?action=getSpot&spotId="+e.target.myCustomId,"_self");
+}
