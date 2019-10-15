@@ -4,7 +4,7 @@
 class Spot{
 
     private $_idSpot;
-    private $nom;
+    private $_nom;
     private $_description;
     private $_latitude;
     private $_longitude;
@@ -15,7 +15,7 @@ class Spot{
     /**
      * Spot constructor.
      * @param $_idSpot
-     * @param $nom
+     * @param $_nom
      * @param $_description
      * @param $_latitude
      * @param $_longitude
@@ -25,7 +25,7 @@ class Spot{
      */
     public function __construct($_idSpot, $nom, $_description, $_latitude, $_longitude, $_ville, $_paysCode, $_type){
         $this->_idSpot = $_idSpot;
-        $this->nom = $nom;
+        $this->_nom = $nom;
         $this->_description = $_description;
         $this->_latitude = $_latitude;
         $this->_longitude = $_longitude;
@@ -55,7 +55,7 @@ class Spot{
      */
     public function getNom()
     {
-        return $this->nom;
+        return $this->_nom;
     }
 
     /**
@@ -63,7 +63,7 @@ class Spot{
      */
     public function setNom($nom)
     {
-        $this->nom = $nom;
+        $this->_nom = $nom;
     }
 
     /**
@@ -165,7 +165,7 @@ class Spot{
 
     public function toJson(){
         $json = array("idSpot"=>$this->_idSpot,
-            "nom"=>$this->nom,
+            "nom"=>$this->_nom,
             "description"=>$this->_description,
             "latitude"=>$this->_latitude,
             "longitude"=>$this->_longitude,

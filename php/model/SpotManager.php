@@ -32,10 +32,10 @@ class SpotManager{
 
     //Selection de tous les spots d'une ville donnée
     public function getAllSpotsByCity($city){
-        $req = $this->_db->prepare('SELECT * FROM spot WHERE ville = ?');
-        $req->execute(array($city));
+        $req = $this->_db->prepare('SELECT * FROM spot WHERE ville LIKE ?');
+        $req->execute(array('%'.$city.'%'));
 
-        return $req->fetch();
+        return $req;
     }
 
     //Selection de tous les spots d'un type donnée
@@ -43,7 +43,15 @@ class SpotManager{
         $req = $this->_db->prepare('SELECT * FROM spot WHERE type = ?');
         $req->execute(array($type));
 
-        return $req->fetch();
+        return $req;
+    }
+
+
+    public function searchResultSpotByName($input){
+        $req = $this->_db->prepare('SELECT * FROM spot WHERE nom LIKE ?');
+        $req->execute(array('%'.$input.'%'));
+
+        return $req;
     }
 
 }

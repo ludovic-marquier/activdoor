@@ -10,7 +10,6 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -20,16 +19,7 @@
 
     <!-- nav bar -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../css/spot_style.css" rel="stylesheet">
-
-    <style>
-        .fixed-action-btn{
-            margin-bottom: 15px;
-            margin-right: 20px;
-        }
-
-    </style>
-
+    <link href="../css/list_style.css" rel="stylesheet">
 </head>
 </head>
 

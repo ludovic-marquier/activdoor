@@ -14,7 +14,7 @@
                         <div class="col-lg-12">
                             <div class="col-xs-12 col-sm-4">
                                 <figure>
-                                    <img class="img-circle img-responsive" alt="" src="../src/img/acticon/<?= $spot['type'] ?>.png">
+                                    <img class="img-circle img-responsive" alt="" src="../src/img/acticon_color/<?= $spot['type'] ?>.png">
                                 </figure>
                                 <div class="row">
                                     <div class="col-xs-12 social-btns">
@@ -34,8 +34,8 @@
                             </div>
                             <div class="col-xs-12 col-sm-8" style="margin-top: 50px;">
                                 <h1> <?= $spot['nom'] ?></h1>
-                                <p class="spot_button" ><?= $spot['type'] ?></p>
-                                <p class="spot_button"><?= $spot['ville'] ?></p>
+                                <p class="spot_button" onclick="openAllSpotsType()"><?= $spot['type'] ?></p>
+                                <p class="spot_button" onclick="openAllSpotsCity()"><?= $spot['ville'] ?></p>
                                 <p class="spot_button" style="background: limegreen; color: white;">J'y suis allé !</p>
 
                                 <form class="rating-form" action="#" method="post" name="rating-movie">
@@ -100,34 +100,21 @@
                     </p>
 
 
-                    <div class="row">
-                        <div class="column">
-                            <img class="img-spot-gallery" src="../src/img/sample/saint-larry/1.jpg">
-                            <img class="img-spot-gallery" src="../src/img/sample/saint-larry/2.jpg">
-
-
-                        </div>
-                        <div class="column">
-                            <img class="img-spot-gallery" src="../src/img/sample/saint-larry/3.jpg">
-                            <img class="img-spot-gallery" src="../src/img/sample/saint-larry/4.jpg">
-
-                        </div>
-
-                        <div class="column">
-                            <img class="img-spot-gallery" src="../src/img/sample/saint-larry/5.jpg">
-                            <img class="img-spot-gallery" src="../src/img/sample/saint-larry/6.jpg">
-
-                        </div>
-
-                        <div class="column">
-                            <img class="img-spot-gallery" src="../src/img/sample/saint-larry/7.jpg">
-
-
-
-                        </div>
-
-                    </div>
+                   
                 </div>
+
+                <div id="fixed-action-btn" class="fixed-action-btn">
+                    <a class="btn-floating btn-large red">
+                        <i class="large material-icons"><img style="height: 30px; width:30px;" src="../src/img/menu.png"></i>
+                    </a>
+                    <ul>
+                        <li><a class="btn-floating red"><i class="material-icons"><img style="height: 25px; width:25px;" src="../src/img/add-transparent.png"></i></a></li>
+                        <li><a class="btn-floating yellow darken-1"><i class="material-icons"><img style="height: 25px; width:25px;" src="../src/img/user-transparent.png"></i></a></li>
+                        <li><a class="btn-floating green"><i class="material-icons"><img style="height: 35px; width:35px;" src="../src/img/info-transparent.png"></i></a></li>
+                        <li><a href="../index.html" class="btn-floating blue"><i class="material-icons"><img style="height: 20px; width:20px;" src="../src/img/map.png"></i></a></li>
+                    </ul>
+                </div>
+
 
             </div>
         </div>
@@ -136,6 +123,33 @@
     </div>
 </div>
 </div>
+
+<script>
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, options);
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, {
+            direction: 'top'
+        });
+    });
+
+
+    function openAllSpotsType(){
+        window.open("https://activdoor.000webhostapp.com/php/index.php?action=getSpotsByType&type=<?= $spot['type']?>","_self");
+    }
+
+    function openAllSpotsCity(){
+        window.open("https://activdoor.000webhostapp.com/php/index.php?action=getSpotsByCity&city=<?= $spot['ville']?>","_self");
+    }
+
+</script>
 
 
 <?php $content = ob_get_clean(); ?>

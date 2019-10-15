@@ -4,6 +4,12 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -149,6 +155,18 @@
                     </div>
                 </div>
 
+                <div id="fixed-action-btn" class="fixed-action-btn">
+                    <a class="btn-floating btn-large red">
+                        <i class="large material-icons"><img style="height: 30px; width:30px;margin-top:13px;" src="../src/img/menu.png"></i>
+                    </a>
+                    <ul>
+                        <li><a class="btn-floating red"><i class="material-icons"><img style="height: 25px; width:25px;margin-top: 7px;" src="../src/img/add-transparent.png"></i></a></li>
+                        <li><a class="btn-floating yellow darken-1"><i class="material-icons"><img style="height: 25px; width:25px;margin-top:7px;" src="../src/img/user-transparent.png"></i></a></li>
+                        <li><a class="btn-floating green"><i class="material-icons"><img style="height: 35px; width:35px;margin-top:2px;" src="../src/img/info-transparent.png"></i></a></li>
+                        <li><a class="btn-floating blue"><i class="material-icons"></i></a></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
         <!-- resume -->
@@ -173,5 +191,22 @@
     }
 
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, options);
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.fixed-action-btn');
+        var instances = M.FloatingActionButton.init(elems, {
+            direction: 'top'
+        });
+    });
+
+</script>
+
 
 </html>

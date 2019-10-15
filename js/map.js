@@ -10,7 +10,8 @@ document.getElementById('mainscreen').style.height = height.toString()+"px";
 document.getElementById('mainscreen').style.width = width.toString()+"px";
 
 document.getElementById('nav').style.visibility = "hidden";
-document.getElementById('materialButtons').style.visibility = "hidden";
+document.getElementById('fixed-action-btn').style.visibility = "hidden";
+document.getElementById('bottom').style.visibility = "hidden";
 
 
 // On initialise la latitude et la longitude de Paris (centre de la carte)
@@ -60,70 +61,70 @@ function displayMap(latitude, longitude, zoomLevel){
 
 
     var skiIcon = L.icon({
-        iconUrl: "./src/img/markers/ski.png",
+        iconUrl: "./src/img/markers_colors/ski.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
     var vttIcon = L.icon({
-        iconUrl: "./src/img/markers/vtt.png",
+        iconUrl: "./src/img/markers_colors/vtt.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
     var windsurfIcon = L.icon({
-        iconUrl: "./src/img/markers/windsurf.png",
+        iconUrl: "./src/img/markers_colors/windsurf.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
     var runningIcon = L.icon({
-        iconUrl: "./src/img/markers/running.png",
+        iconUrl: "./src/img/markers_colors/running.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
     var wakeBoardIcon = L.icon({
-        iconUrl: "./src/img/markers/wakeboard.png",
+        iconUrl: "./src/img/markers_colors/wakeboard.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
     var workoutIcon = L.icon({
-        iconUrl: "./src/img/markers/workout.png",
+        iconUrl: "./src/img/markers_colors/workout.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
     var basketIcon = L.icon({
-        iconUrl: "./src/img/markers/basket.png",
+        iconUrl: "./src/img/markers_colors/basket.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
     var surfIcon = L.icon({
-        iconUrl: "./src/img/markers/surf.png",
+        iconUrl: "./src/img/markers_colors/surf.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
     var footballIcon = L.icon({
-        iconUrl: "./src/img/markers/football.png",
+        iconUrl: "./src/img/markers_colors/football.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
     });
 
     var skateboardIcon = L.icon({
-        iconUrl: "./src/img/markers/skateboard.png",
+        iconUrl: "./src/img/markers_colors/skateboard.png",
         iconSize: [40, 56],
         iconAnchor: [25, 50],
         popupAnchor: [-3, -76],
@@ -141,8 +142,6 @@ function displayMap(latitude, longitude, zoomLevel){
         "skateboard" : skateboardIcon
     };
 
-
-
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -151,14 +150,11 @@ function displayMap(latitude, longitude, zoomLevel){
             var markers = [];
 
             for (i in obj) {
-                console.log(obj[i].type);
-
                 markers[i] = L.marker([obj[i].latitude, obj[i].longitude], {icon: tabIcon[obj[i].type]});
                 markers[i].myCustomId = obj[i].idSpot;
                 markers[i].addTo(macarte);
                 markers[i].on('click', markerClick);
-
-
+                markers[i].on('mouseover', hover);
             }
 
             for(i in markers){
@@ -170,12 +166,17 @@ function displayMap(latitude, longitude, zoomLevel){
     xhttp.send();
 
     macarte.addLayer(markerClusters);
-
-
     document.getElementById('nav').style.visibility = "visible";
-    document.getElementById('materialButtons').style.visibility = "visible";
+    document.getElementById('fixed-action-btn').style.visibility = "visible";
+    document.getElementById('bottom').style.visibility = "visible";
+    document.getElementById('centerLogo').style.visibility = "hidden";
+
 }
 
 function markerClick(e){
     window.open("./php/index.php?action=getSpot&spotId="+e.target.myCustomId,"_self");
+}
+
+function hover(e){
+
 }
