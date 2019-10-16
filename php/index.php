@@ -79,10 +79,12 @@ if(isset($_GET['action'])){
             }
             break;
 
-        default :
+        case "isConnected":
+            $userController->isConnected(true);
             break;
 
-
+        default :
+            break;
     }
 }else{
 

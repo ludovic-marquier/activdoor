@@ -30,7 +30,7 @@ function initMap() {
 
     navigator.geolocation.getCurrentPosition(function(location) {
         //document.getElementById('lds-ripple').style.visibility = "visible";
-        displayMap(location.coords.latitude, location.coords.longitude, 11);
+        displayMap(location.coords.latitude, location.coords.longitude, 13);
 
     }, function (error){
         displayMap(48.856614, 2.3522219, 6);
@@ -58,6 +58,13 @@ function displayMap(latitude, longitude, zoomLevel){
         minZoom: 1,
         maxZoom: 20
     }).addTo(macarte);
+
+    macarte.on('click', function(e){
+        var coord = e.latlng;
+        var lat = coord.lat;
+        var lng = coord.lng;
+        console.log("You clicked the map at latitude: " + lat + " and longitude: " + lng);
+    });
 
 
     var skiIcon = L.icon({

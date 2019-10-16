@@ -96,4 +96,22 @@ class UserController{
         }
     }
 
+
+    /**
+     *
+     * Check if the user is connectd or not to the plateform
+     *
+     * @param boolean  $json if you want the result as json or not
+     * @return boolean
+     */
+    public function isConnected($json){
+        if($_SESSION['isConnected']){
+            if($json) echo json_encode(array("connected"=>"yes"));
+            return true;
+        }else{
+            if($json) echo json_encode(array("connected"=>"no"));
+            return false;
+        }
+    }
+
 }
